@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import {Text, TextInput, TouchableOpacity, StyleSheet, View} from "react-native";
+import {SafeAreaView, Text, TextInput, TouchableOpacity, StyleSheet, View, Button} from "react-native";
 
 export default function App() {
   const [email, setEmail] = useState("");
-  const [idade, setIdade] = useState("");
-  const [dados, setDados] = useState<{ email: string; idade: number } | null>(null);
+  const [senha, setSenha] = useState("");
+  const [dados, setDados] = useState<{ email: string; senha: string } | null>(null);
 
   const handleLogin = () => {
-    setDados({ email, idade });
+    setDados({ email, senha });
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Digite seu e-mail"
@@ -25,23 +25,27 @@ export default function App() {
 
       <TextInput
         style={styles.input}
-        placeholder="Digite sua idade"
-        onChangeText={setIdade}
-        value={idade}
+        placeholder="Digite sua senha"
+        value={senha}
+        onChangeText={setSenha}
+        secureTextEntry={true}
         maxLength={8}
       />
 
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Logar</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Cadastrar-se</Text>
+      </TouchableOpacity>
 
       {dados && (
         <View style={styles.resultado}>
           <Text>Email: {dados.email}</Text>
-          <Text>Idade: {dados.idade}</Text>
+          <Text>Senha: {dados.senha}</Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   button: {
-    backgroundColor: '#2d7ec9ff',
+    backgroundColor: '#c9be2dff',
     padding: 14,
     borderRadius: 8,
     alignItems: "center",
