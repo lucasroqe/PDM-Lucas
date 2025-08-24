@@ -1,4 +1,4 @@
-import Seis from '@/listas/lista1/ex6'
+import Oito from '@/listas/lista1/ex8'
 
 export default function App() {
   // return <Um/>
@@ -6,6 +6,8 @@ export default function App() {
   // return <Tres/>
   // return <Quatro/>
   // return <Cinco/>
-  return <Seis/>
+  // return <Seis/>
+  // return <Sete/>
+  return <Oito/>
 }
 
