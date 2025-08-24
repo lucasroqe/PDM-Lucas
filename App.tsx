@@ -1,8 +1,9 @@
-import Tres from '@/listas/lista1/ex3'
+import Quatro from '@/listas/lista1/ex4'
 
 export default function App() {
   // return <Um/>
   // return <Dois/>
-  return <Tres/>
+  // return <Tres/>
+  return <Quatro/>
 }
 
