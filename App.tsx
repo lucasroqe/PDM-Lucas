@@ -1,4 +1,4 @@
-import Nove from '@/listas/lista1/ex9'
+import Dez from '@/listas/lista1/ex10'
 
 export default function App() {
   // return <Um/>
@@ -9,6 +9,7 @@ export default function App() {
   // return <Seis/>
   // return <Sete/>
   // return <Oito/>
-  return <Nove/>
+  // return <Nove/>
+  return <Dez/>
 }
 
