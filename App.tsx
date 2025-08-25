@@ -1,6 +1,6 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Onze from "@/listas/lista2/ex1";
 import Um from "@/listas/lista1/ex1"
@@ -11,19 +11,19 @@ import Quatro from "@/listas/lista1/ex4"
 
 import { RootStackParamList } from "@/../types";
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Onze">
-        <Stack.Screen name="Onze" component={Onze}/>
-        <Stack.Screen name="Um" component={Um}/>
-        <Stack.Screen name="Dois" component={Dois}/>
-        <Stack.Screen name="Tres" component={Tres}/>
-        <Stack.Screen name="Quatro" component={Quatro}/>
+      <Drawer.Navigator initialRouteName="Onze">
+        <Drawer.Screen name="Onze" component={Onze}/>
+        <Drawer.Screen name="Um" component={Um}/>
+        <Drawer.Screen name="Dois" component={Dois}/>
+        <Drawer.Screen name="Tres" component={Tres}/>
+        <Drawer.Screen name="Quatro" component={Quatro}/>
         {/* // .... demais exercícios  */}
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
