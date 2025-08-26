@@ -3,15 +3,17 @@ import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Icon from "react-native-vector-icons/AntDesign";
+
 import Quatro from "@/listas/lista2/ex4";
-import { CepProvider } from "@/../contexts/CepContexts";
+import Historico from "@/listas/lista2/ex5/screens/historico";
+import { CepProvider } from "./contexts/CepContexts5";
 
 const Drawer = createDrawerNavigator();
 
 function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Acesse o Ex4 pelo Drawer</Text>
+      <Text>Acesse as opções no Drawer</Text>
     </View>
   );
 }
@@ -43,6 +45,15 @@ export default function App() {
             options={{
               drawerIcon: ({ color, size }) => (
                 <Icon name="search1" size={size} color={color} />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="Histórico"
+            component={Historico}
+            options={{
+              drawerIcon: ({ color, size }) => (
+                <Icon name="clockcircleo" size={size} color={color} />
               ),
             }}
           />
