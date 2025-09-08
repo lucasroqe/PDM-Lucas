@@ -1,10 +1,10 @@
-import Seis from "@/listas/lista3/ex6";
+import Sete from "@/listas/lista3/ex7";
 import { View } from "react-native";
 
 export default function App() {
   return (
     <View>
-      <Seis/>
+      <Sete/>
     </View>
   );
 }
