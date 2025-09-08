@@ -4,8 +4,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 
-export default function Sete() {
-  const [images, setImages] = useState<string[]>([]); 
+export default function Oito() {
+  const [images, setImages] = useState<string[]>([]);
 
   const pickImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -44,20 +44,32 @@ export default function Sete() {
     }
   };
 
+  const removeImage = (uri: string) => {
+    setImages((prev) => prev.filter((item) => item !== uri));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topButtons}>
         <TouchableOpacity style={styles.button} onPress={pickImage}>
           <MaterialIcons name="photo" size={32} color="deepskyblue" />
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.button} onPress={takePhoto}>
           <MaterialIcons name="photo-camera" size={32} color="deepskyblue" />
         </TouchableOpacity>
       </View>
+
       <StatusBar style="light" />
+
       <ScrollView contentContainerStyle={styles.imageContainer}>
         {images.map((uri, index) => (
-          <Image key={index} source={{ uri }} style={styles.image} />
+          <View key={index} style={styles.imageWrapper}>
+            <Image source={{ uri }} style={styles.image} />
+            <TouchableOpacity style={styles.closeButton} onPress={() => removeImage(uri)}>
+              <MaterialIcons name="close" size={24} color="white" />
+            </TouchableOpacity>
+          </View>
         ))}
       </ScrollView>
     </SafeAreaView>
@@ -77,19 +89,31 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 10,
     marginTop: 5,
+    zIndex: 10,
   },
   button: {
     padding: 5,
   },
   imageContainer: {
-    paddingTop: 60, 
+    paddingTop: 60,
     alignItems: "center",
     justifyContent: "center",
     gap: 10,
   },
+  imageWrapper: {
+    position: "relative",
+  },
   image: {
     width: 200,
     height: 200,
-    marginBottom: 10,
+    borderRadius: 8,
+  },
+  closeButton: {
+    position: "absolute",
+    top: 5,
+    left: 5,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    borderRadius: 12,
+    padding: 2,
   },
 });
